@@ -16,8 +16,12 @@ public:
 	//element methods
 	void add(const int& data);
 	void remove(unsigned int index);
-	int & at(unsigned int index) const;
-	int & operator[](unsigned int index) const;
+	
+	int & at(unsigned int index);
+	int & operator[](unsigned int index);
+	
+	const int & at(unsigned int index) const;
+	const int & operator[](unsigned int index) const;
 	
 	//container methods
 	void printArray() const;
