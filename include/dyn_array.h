@@ -10,15 +10,14 @@ public:
 	DynamicArray();
 	explicit DynamicArray(unsigned int size);
 	DynamicArray(const DynamicArray & another);
+	DynamicArray(DynamicArray && another) noexcept;
 	DynamicArray & operator=(const DynamicArray & another);
+	DynamicArray & operator=(DynamicArray && another) noexcept;
 	~DynamicArray();
 	
 	//element methods
 	void add(const int& data);
 	void remove(unsigned int index);
-	
-	int & at(unsigned int index);
-	int & operator[](unsigned int index);
 	
 	const int & at(unsigned int index) const;
 	const int & operator[](unsigned int index) const;

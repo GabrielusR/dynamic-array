@@ -26,5 +26,7 @@ int main() {
 	
 	std::cout << arr1 << arr2 << arr3;
 	
+	DynamicArray arr4 = std::move(arr3);
+	
 	return 0;
 }

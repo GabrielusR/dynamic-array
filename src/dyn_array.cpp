@@ -31,7 +31,7 @@ DynamicArray::DynamicArray(const DynamicArray & another)
 
 DynamicArray& DynamicArray::operator=(const DynamicArray & another) {
 	
-	std::cout << "DynamicArray operator=(const DynamicArray&)" << std::endl; 
+	std::cout << "DynamicArray & operator=(const DynamicArray&)" << std::endl; 
 	
 	if(this == &another) {
 
@@ -47,6 +47,40 @@ DynamicArray& DynamicArray::operator=(const DynamicArray & another) {
 	m_size = another.m_size;
 	m_capacity = another.m_capacity;
 	
+	return *this;
+}
+
+DynamicArray::DynamicArray(DynamicArray && another)
+	: m_size(another.m_size), m_capacity(another.m_capacity)
+{
+	std::cout << "DynamicArray(DynamicArray&&)" << std::endl;
+	
+	m_buffer = another.m_buffer;
+	
+	//create hollow object
+	another.m_size = 0;
+	another.m_capacity = 0;
+	another.m_buffer = nullptr;
+}
+
+DynamicArray & DynamicArray::operator=(DynamicArray && another) {
+	
+	std::cout << "DynamicArray & operator=(DynamicArray&&)" << std::endl;
+	
+	if(this != &another) {
+		
+		//change ownership ("steal")
+		m_size = another.m_size;
+		m_capacity = another.m_capacity;
+		delete [] m_buffer;
+		m_buffer = another.m_buffer;
+		
+		//create hollow object
+		another.m_size = 0;
+		another.m_capacity = 0;
+		another.m_buffer = nullptr;
+	}
+		
 	return *this;
 }
 
@@ -111,7 +145,7 @@ void DynamicArray::remove(unsigned int index) {
 	m_size--;
 }
 
-int & DynamicArray::operator[](unsigned int index) const {
+const int & DynamicArray::operator[](unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
@@ -123,7 +157,7 @@ int & DynamicArray::operator[](unsigned int index) const {
 	return m_buffer[index];
 }
 
-int & DynamicArray::at(unsigned int index) const {
+const int & DynamicArray::at(unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
