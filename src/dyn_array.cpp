@@ -50,7 +50,7 @@ DynamicArray& DynamicArray::operator=(const DynamicArray & another) {
 	return *this;
 }
 
-DynamicArray::DynamicArray(DynamicArray && another)
+DynamicArray::DynamicArray(DynamicArray && another) noexcept
 	: m_size(another.m_size), m_capacity(another.m_capacity)
 {
 	std::cout << "DynamicArray(DynamicArray&&)" << std::endl;
@@ -63,7 +63,7 @@ DynamicArray::DynamicArray(DynamicArray && another)
 	another.m_buffer = nullptr;
 }
 
-DynamicArray & DynamicArray::operator=(DynamicArray && another) {
+DynamicArray & DynamicArray::operator=(DynamicArray && another) noexcept {
 	
 	std::cout << "DynamicArray & operator=(DynamicArray&&)" << std::endl;
 	

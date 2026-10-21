@@ -27,6 +27,7 @@ public:
 	unsigned int getSize() const;
 	unsigned int getCapacity() const;
 	
+	const int * const get() const;
 
 private:
 
