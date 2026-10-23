@@ -1,11 +1,8 @@
-#include <iostream>
-
 #include "dyn_array.h"
-#include "globals.h"
 
 int main() {
 	
-	DynamicArray arr1;
+	DynamicArray<int> arr1;
 	
 	for(unsigned int i = 0; i < 10; i++) {
 		
@@ -14,11 +11,11 @@ int main() {
 	
 	arr1.add(11);
 	
-	DynamicArray arr2 = arr1;
+	DynamicArray<int> arr2 = arr1;
 	
 	arr2.remove(4);
 	
-	DynamicArray arr3 = arr2;
+	DynamicArray<int> arr3 = arr2;
 	
 	arr3.add(12);
 	
@@ -26,7 +23,7 @@ int main() {
 	
 	std::cout << arr1 << arr2 << arr3;
 	
-	DynamicArray arr4 = std::move(arr3);
+	DynamicArray<int> arr4 = std::move(arr3);
 	
 	return 0;
 }
