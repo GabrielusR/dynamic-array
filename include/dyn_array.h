@@ -51,7 +51,7 @@ template<typename T>
 DynamicArray<T>::DynamicArray() 
 	: m_size(0), m_capacity(BUFF_SIZE) { 
 	
-	std::cout << "DynamicArray()" << std::endl; 
+	DEBUG("DynamicArray()");
 	
 	m_buffer = new T[BUFF_SIZE]; 
 }
@@ -60,7 +60,7 @@ template<typename T>
 DynamicArray<T>::DynamicArray(std::size_t size) 
 	: m_size(0), m_capacity(size) { 
 	
-	std::cout << "DynamicArray(std::size_t)" << std::endl; 
+	DEBUG("DynamicArray(std::size_t)");
 	
 	m_buffer = new T[size]; 
 }
@@ -69,7 +69,7 @@ template<typename T>
 DynamicArray<T>::DynamicArray(const DynamicArray & another) 
 	: m_size(another.m_size), m_capacity(another.m_capacity) {
 		
-	std::cout << "DynamicArray(const DynamicArray&)" << std::endl;
+	DEBUG("DynamicArray(const DynamicArray&)");
 	
 	m_buffer = new T[another.m_capacity];
 	
@@ -79,7 +79,7 @@ DynamicArray<T>::DynamicArray(const DynamicArray & another)
 template<typename T>
 DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray & another) {
 	
-	std::cout << "DynamicArray & operator=(const DynamicArray&)" << std::endl; 
+	DEBUG("DynamicArray & operator=(const DynamicArray&)");
 	
 	if(this == &another) {
 
@@ -102,7 +102,7 @@ template<typename T>
 DynamicArray<T>::DynamicArray(DynamicArray && another) noexcept
 	: m_size(another.m_size), m_capacity(another.m_capacity)
 {
-	std::cout << "DynamicArray(DynamicArray&&)" << std::endl;
+	DEBUG("DynamicArray(DynamicArray&&)");
 	
 	m_buffer = another.m_buffer;
 	
@@ -115,7 +115,7 @@ DynamicArray<T>::DynamicArray(DynamicArray && another) noexcept
 template<typename T>
 DynamicArray<T> & DynamicArray<T>::operator=(DynamicArray && another) noexcept {
 	
-	std::cout << "DynamicArray & operator=(DynamicArray&&)" << std::endl;
+	DEBUG("DynamicArray & operator=(DynamicArray&&)");
 	
 	if(this != &another) {
 		
@@ -137,7 +137,7 @@ DynamicArray<T> & DynamicArray<T>::operator=(DynamicArray && another) noexcept {
 template<typename T>
 DynamicArray<T>::~DynamicArray() { 
 	
-	std::cout << "~DynamicArray()" << std::endl; 
+	DEBUG("~DynamicArray()");
 	
 	delete [] m_buffer; 
 	
@@ -158,7 +158,7 @@ std::size_t DynamicArray<T>::getCapacity() const {
 template<typename T>
 void DynamicArray<T>::resize() {
 	
-	std::cout << "resize()" << std::endl;
+	DEBUG("resize()");
 	
 	std::size_t newSize = round(m_size * 1.5f);
 	
@@ -191,7 +191,7 @@ void DynamicArray<T>::remove(unsigned int index) {
 	
 	if(index >= m_capacity) {
 		
-		std::cout << "Index out of bound." << std::endl;
+		LOG("Index out of bound.");
 		
 		throw std::perror;
 	}
@@ -206,7 +206,7 @@ const T & DynamicArray<T>::operator[](unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
-		std::cout << "Index out of bound." << std::endl;
+		LOG("Index out of bound.");
 		
 		throw std::perror;
 	}
@@ -219,7 +219,7 @@ const T & DynamicArray<T>::at(unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
-		std::cout << "Index out of bound." << std::endl;
+		DEBUG("Index out of bound.");
 		
 		throw std::perror;
 	}

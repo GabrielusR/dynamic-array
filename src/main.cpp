@@ -1,3 +1,4 @@
+#include "globals.h"
 #include "dyn_array.h"
 
 
