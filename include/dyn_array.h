@@ -53,7 +53,7 @@ DynamicArray<T>::DynamicArray()
 	
 	DEBUG("DynamicArray()");
 	
-	m_buffer = new T[BUFF_SIZE]; 
+	m_buffer = new T[BUFF_SIZE]{}; 
 }
 
 template<typename T>
@@ -62,7 +62,7 @@ DynamicArray<T>::DynamicArray(std::size_t size)
 	
 	DEBUG("DynamicArray(std::size_t)");
 	
-	m_buffer = new T[size]; 
+	m_buffer = new T[size]{}; 
 }
 
 template<typename T>
