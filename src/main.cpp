@@ -1,5 +1,6 @@
 #include "dyn_array.h"
 
+
 int main() {
 	
 	DynamicArray<int> arr1{};

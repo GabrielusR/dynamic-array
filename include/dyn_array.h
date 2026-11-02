@@ -1,8 +1,9 @@
 #pragma once
 
 #include <cstddef>
+#include <cmath>
 
-const std::size_t BUFF_SIZE = 10;
+const std::size_t BUFF_SIZE = 1;
 
 template<typename T>
 class DynamicArray {
@@ -68,7 +69,7 @@ template<typename T>
 DynamicArray<T>::DynamicArray(const DynamicArray & another) 
 	: m_size(another.m_size), m_capacity(another.m_capacity) {
 		
-	std::cout << "DynamicArray(const DynamicArray&)" << std::endl; 
+	std::cout << "DynamicArray(const DynamicArray&)" << std::endl;
 	
 	m_buffer = new T[another.m_capacity];
 	
@@ -159,7 +160,7 @@ void DynamicArray<T>::resize() {
 	
 	std::cout << "resize()" << std::endl;
 	
-	std::size_t newSize = m_size * 1.5;
+	std::size_t newSize = round(m_size * 1.5f);
 	
 	T * tmp = new T[newSize];
 	
