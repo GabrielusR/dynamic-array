@@ -4,6 +4,8 @@
 
 #define LOG(msg) std::cout << "[LOG] LINE " << __LINE__ << ": " << msg << std::endl
 
+#define PRINT(msg) std::cout << msg << std::endl
+
 #ifdef NDEBUG
 
 #define DEBUG(msg) ((void)(0))
