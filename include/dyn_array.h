@@ -189,7 +189,7 @@ void DynamicArray<T>::add(const T&data) {
 template<typename T>
 void DynamicArray<T>::remove(unsigned int index) {
 	
-	if(index >= m_capacity) {
+	if(index >= m_size) {
 		
 		throw std::out_of_range("Index out of bound");
 	}
@@ -202,7 +202,7 @@ void DynamicArray<T>::remove(unsigned int index) {
 template<typename T>
 const T & DynamicArray<T>::operator[](unsigned int index) const {
 	
-	if(index >= m_capacity) {
+	if(index >= m_size) {
 		
 		throw std::out_of_range("Index out of bound");
 	}
@@ -213,7 +213,7 @@ const T & DynamicArray<T>::operator[](unsigned int index) const {
 template<typename T>
 const T & DynamicArray<T>::at(unsigned int index) const {
 	
-	if(index >= m_capacity) {
+	if(index >= m_size) {
 		
 		throw std::out_of_range("Index out of bound");
 	}
