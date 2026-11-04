@@ -92,8 +92,8 @@ DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray & another) {
 	
 	memcpy(m_buffer, another.m_buffer, another.m_size*sizeof(T));
 	
-	m_size = another.m_size;
-	m_capacity = another.m_capacity;
+	m_size = { another.m_size };
+	m_capacity = { another.m_capacity };
 	
 	return *this;
 }
@@ -104,12 +104,12 @@ DynamicArray<T>::DynamicArray(DynamicArray && another) noexcept
 {
 	DEBUG("DynamicArray(DynamicArray&&)");
 	
-	m_buffer = another.m_buffer;
+	m_buffer = { another.m_buffer };
 	
 	//create hollow object
-	another.m_size = 0;
-	another.m_capacity = 0;
-	another.m_buffer = nullptr;
+	another.m_size = {};
+	another.m_capacity = {};
+	another.m_buffer = {};
 }
 
 template<typename T>
@@ -120,15 +120,15 @@ DynamicArray<T> & DynamicArray<T>::operator=(DynamicArray && another) noexcept {
 	if(this != &another) {
 		
 		//change ownership ("steal")
-		m_size = another.m_size;
-		m_capacity = another.m_capacity;
+		m_size = { another.m_size };
+		m_capacity = { another.m_capacity };
 		delete [] m_buffer;
-		m_buffer = another.m_buffer;
+		m_buffer = { another.m_buffer };
 		
 		//create hollow object
-		another.m_size = 0;
-		another.m_capacity = 0;
-		another.m_buffer = nullptr;
+		another.m_size = {};
+		another.m_capacity = {};
+		another.m_buffer = {};
 	}
 		
 	return *this;
@@ -160,7 +160,7 @@ void DynamicArray<T>::resize() {
 	
 	DEBUG("resize()");
 	
-	std::size_t newSize = round(m_size * 1.5f);
+	std::size_t newSize = (std::size_t)round(m_size * 1.5f);
 	
 	T * tmp = new T[newSize];
 	
@@ -168,9 +168,9 @@ void DynamicArray<T>::resize() {
 	
 	delete [] m_buffer;
 	
-	m_buffer = tmp;
+	m_buffer = { tmp };
 	
-	m_capacity = newSize;
+	m_capacity = { newSize };
 }
 
 template<typename T>
@@ -181,7 +181,7 @@ void DynamicArray<T>::add(const T&data) {
 		resize();
 	}
 	
-	m_buffer[m_size] = data;
+	m_buffer[m_size] = { data };
 	
 	m_size++;	
 }
@@ -196,7 +196,7 @@ void DynamicArray<T>::remove(unsigned int index) {
 		throw std::perror;
 	}
 	
-	m_buffer[index] = 0;
+	m_buffer[index] = {};
 	
 	m_size--;
 }

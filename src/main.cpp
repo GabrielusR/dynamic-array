@@ -13,11 +13,11 @@ int main() {
 	
 	arr1.add(11);
 	
-	DynamicArray<int> arr2{arr1};
+	DynamicArray<int> arr2(arr1);
 	
 	arr2.remove(4);
 	
-	DynamicArray<int> arr3{arr2};
+	DynamicArray<int> arr3(arr2);
 	
 	arr3.add(12);
 	
