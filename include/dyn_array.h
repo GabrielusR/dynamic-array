@@ -160,9 +160,9 @@ void DynamicArray<T>::resize() {
 	
 	DEBUG("resize()");
 	
-	std::size_t newSize = (std::size_t)round(m_size * 1.5f);
+	std::size_t newCapacity = (std::size_t)round(m_capacity * 1.5f);
 	
-	T * tmp = new T[newSize];
+	T * tmp = new T[newCapacity];
 	
 	memcpy(tmp, m_buffer, m_size*sizeof(T));
 	
@@ -170,7 +170,7 @@ void DynamicArray<T>::resize() {
 	
 	m_buffer = { tmp };
 	
-	m_capacity = { newSize };
+	m_capacity = { newCapacity };
 }
 
 template<typename T>
@@ -191,9 +191,7 @@ void DynamicArray<T>::remove(unsigned int index) {
 	
 	if(index >= m_capacity) {
 		
-		LOG("Index out of bound.");
-		
-		throw std::perror;
+		throw std::out_of_range("Index out of bound");
 	}
 	
 	m_buffer[index] = {};
@@ -206,9 +204,7 @@ const T & DynamicArray<T>::operator[](unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
-		LOG("Index out of bound.");
-		
-		throw std::perror;
+		throw std::out_of_range("Index out of bound");
 	}
 	
 	return m_buffer[index];
@@ -219,9 +215,7 @@ const T & DynamicArray<T>::at(unsigned int index) const {
 	
 	if(index >= m_capacity) {
 		
-		DEBUG("Index out of bound.");
-		
-		throw std::perror;
+		throw std::out_of_range("Index out of bound");
 	}
 	
 	return m_buffer[index];
