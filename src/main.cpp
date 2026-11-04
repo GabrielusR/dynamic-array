@@ -17,6 +17,10 @@ int main() {
 	
 	arr2.remove(4);
 	
+	arr2.remove(1);
+	
+	arr2.remove(2);
+	
 	DynamicArray<int> arr3(arr2);
 	
 	arr3.add(12);

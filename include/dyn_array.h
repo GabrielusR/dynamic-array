@@ -194,6 +194,11 @@ void DynamicArray<T>::remove(unsigned int index) {
 		throw std::out_of_range("Index out of bound");
 	}
 	
+	for(std::size_t i = index; i + 1 < m_size; i++) {
+
+		m_buffer[i] = m_buffer[i + 1];
+	}
+	
 	m_buffer[index] = {};
 	
 	m_size--;
