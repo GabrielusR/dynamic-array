@@ -1,10 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 
-#define LOG(msg) std::cout << "[LOG] " << msg << std::endl
+static std::ofstream logFile("dynamic.log", std::ios::app);
 
-#define ERR(msg) std::cerr << "[ERR] " << msg << std::endl;
+#define LOG(msg) logFile << "[LOG]: " << msg << std::endl
+
+#define ERR(msg) std::cerr << "[ERR]: " << msg << std::endl
 
 #define PRINT(msg) std::cout << msg << std::endl
 
@@ -14,6 +17,6 @@
 
 #else
 
-#define DEBUG(msg) std::cout << "[DEBUG] LINE " << __LINE__ << ": " << msg << std::endl
+#define DEBUG(msg) std::cout << "[DEBUG]: " << __FILE__ << ":" << __LINE__ << " - " << msg << std::endl
 
 #endif

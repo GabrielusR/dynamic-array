@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "errors.h"
 #include "dyn_array.h"
 
 int main() {
@@ -31,6 +31,8 @@ int main() {
 		std::cout << arr1 << arr2 << arr3;
 		
 		DynamicArray<int> arr4(std::move(arr3));
+
+		LOG("Testing logging...");
 	}	
 	catch(const std::exception &ex) {
 		
