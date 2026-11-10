@@ -1,4 +1,4 @@
-#include "errors.h"
+#include "logging.h"
 #include "dyn_array.h"
 
 int main() {
