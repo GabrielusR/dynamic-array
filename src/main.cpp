@@ -34,11 +34,11 @@ int main() {
 	}	
 	catch(const std::exception &ex) {
 		
-		PRINT(ex.what());
+		ERR(ex.what());
 	}
 	catch(...) {
 		
-		PRINT("Unknown exception thrown.");
+		ERR("Unknown exception thrown.");
 	}
 	
 	return 0;
