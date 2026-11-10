@@ -33,6 +33,13 @@ int main() {
 		DynamicArray<int> arr4(std::move(arr3));
 
 		LOG("Testing logging...");
+
+		ErrObj failed{};
+
+		failed.code = {ErrCode::Err1};
+		failed.status = {"Testing error..."};
+
+		ERR(failed);
 	}	
 	catch(const std::exception &ex) {
 		
