@@ -3,4 +3,5 @@ CMakeFiles/
 cmake_install.cmake
 dynamic-array*
 Makefile
+*.log
 .codelite/
