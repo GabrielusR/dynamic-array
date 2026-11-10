@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#define LOG(msg) std::cout << "[LOG] LINE " << __LINE__ << ": " << msg << std::endl
+#define LOG(msg) std::cout << "[LOG] " << msg << std::endl
 
-#define ERR(msg) std::cerr << "[ERR] LINE " << __LINE__ << ": " << msg << std::endl;
+#define ERR(msg) std::cerr << "[ERR] " << msg << std::endl;
 
 #define PRINT(msg) std::cout << msg << std::endl
 
