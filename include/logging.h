@@ -1,10 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <fstream>
 #include <cstring>
-
-static std::ofstream logFile("__file__.log", std::ios::app);
 
 enum ErrCode {NoErr, Err1, Err2, Err3};
 
@@ -22,7 +19,7 @@ static std::ostream & operator <<(std::ostream &err, const ErrObj& obj) {
 	return err; 
 }
 
-#define LOG(msg) logFile << "[LOG]: " << msg << std::endl
+#define LOG(stream, msg) stream << "[LOG]: " << msg << std::endl
 
 #define ERR(obj) std::cerr << "[ERR]: " << obj << std::endl
 
