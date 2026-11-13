@@ -12,18 +12,18 @@ struct ErrObj {
 	explicit operator bool() const { return (code == ErrCode::NoErr || strlen(status) == 0) ? false : true; }
 };
 
-static std::ostream & operator <<(std::ostream &err, const ErrObj& obj) {
+std::ostream & operator <<(std::ostream &err, const ErrObj& obj) {
 
 	err << "Error " << obj.code << " - " << obj.status;
 
 	return err; 
 }
 
-#define LOG(stream, msg) stream << "[LOG]: " << msg << std::endl
+#define LOG(stream, msg) stream << "[LOG]: " << msg << "\n" 
 
-#define ERR(obj) std::cerr << "[ERR]: " << obj << std::endl
+#define ERR(obj) std::cerr << "[ERR]: " << obj << "\n" 
 
-#define PRINT(msg) std::cout << msg << std::endl
+#define PRINT(msg) std::cout << msg << "\n"
 
 #ifdef NDEBUG
 
@@ -31,6 +31,6 @@ static std::ostream & operator <<(std::ostream &err, const ErrObj& obj) {
 
 #else
 
-#define DEBUG(msg) std::cout << "[DEBUG]: " << __FILE__ << ":" << __LINE__ << " - " << msg << std::endl
+#define DEBUG(msg) std::cout << "[DEBUG]: " << __FILE__ << ":" << __LINE__ << " - " << msg << "\n"
 
 #endif
